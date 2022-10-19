@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// MVC
+// M - Model
+// V - View
+// C - Controller
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('hello', function () {
+    $name = "Cat";
+    return view('hi', [
+        'display' => $name,
+        'company' => 'Dogs Inc.'
+    ]);
 });
