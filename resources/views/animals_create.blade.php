@@ -17,7 +17,14 @@
         <br>
         <br>
         <label>Species:</label>
-        <input type="text" name="species">
+        <pre>
+            {{ json_encode($species) }}
+        </pre>
+        <select name="species">
+            @foreach ($species as $kind)
+                <option>{{ $kind }}</option>
+            @endforeach
+        </select>
         <br><br>
         <button>
             Save

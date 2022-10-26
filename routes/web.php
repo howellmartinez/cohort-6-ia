@@ -32,7 +32,12 @@ Route::get('hello', function () {
 });
 
 Route::get('animals/create', function () {
-    return view('animals_create');
+    $kinds = [
+        'Dog', 'Cat', 'Mouse', 'Bear'
+    ];
+    return view('animals_create', [
+        'species' => $kinds,
+    ]);
 });
 
 Route::post('create_animal', function () {
