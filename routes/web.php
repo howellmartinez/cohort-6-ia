@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Animal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,28 @@ Route::get('hello', function () {
         'display' => $name,
         'company' => 'Dogs Inc.'
     ]);
+});
+
+Route::get('animals/create', function () {
+    return view('animals_create');
+});
+
+Route::post('create_animal', function () {
+    $name = request()->input('name');
+    $age = request()->input('age');
+    $species = request()->input('species');
+
+    // Animal::create([
+    //     'name' => $name,
+    //     'age' => $age,
+    //     'species' => $species,
+    // ]);
+
+    $animal = new Animal();
+    $animal->name = $name;
+    $animal->age = $age;
+    $animal->species = $species;
+    $animal->save();
+
+    return redirect('/animals/create');
 });
